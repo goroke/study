@@ -1,11 +1,8 @@
-# subject = ' $ python, data structure, database     $$$'
-# print(subject.find('data'), subject.index('data'))
-#
-# print(subject.find('asd'), subject.index('asd'))
-
-song = """When an eel grabs your arm,
- And it causes great harm,
- That's - a moray!"""
-
-i = song.rfind('m')
-print(song[:i] + song[i:].capitalize())
+number = int(input("정수 입력: "))
+counts = 0
+for k in range(2, number):
+    if number % k == 0:
+        print(number, 'is NOT prime number!')
+        break
+else:
+    print(number, 'is prime number!')
