@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class FirstEx0125 {
 
@@ -42,5 +43,18 @@ public class FirstEx0125 {
 		System.out.printf("%d", s);
 		
 		System.out.println(++s);
+		
+		// write 메소드는 버퍼에 넣는 기능만 한다. println 을 써야 출력이 된다.
+		System.out.write(65);
+		System.out.println();
+		System.out.println("in English 'hello'");
+		System.out.println("in English \"hello\"");	// escape string
+		System.out.println("C:\\Program Files");
+		System.out.println("한글");
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		// 엔터로 구분한다고 했는데, 엔터를 치면 입력이 끝나는 것 아닌가?
+		System.out.println(scanner.nextFloat());
 	}
 }
