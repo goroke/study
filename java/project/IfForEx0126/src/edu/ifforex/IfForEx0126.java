@@ -19,7 +19,7 @@ public class IfForEx0126 {
 		System.out.print("JAVA 점수(0~100) 입력: ");
 		score = sc.nextInt();
 
-		/*// 1. if 문 이용
+		/*// if 문 이용
 		if			(score >= 90	&& score <= 100)	grade = 'A';
 		else if	(score >= 80	&& score <= 90)	grade = 'B';
 		else if	(score >= 70	&& score <= 80)	grade = 'C';
@@ -28,7 +28,7 @@ public class IfForEx0126 {
 		else	grade = '?';
 		*/	
 		
-		// 1-1. 더 짧은 if
+		// 1. 더 짧은 if
 		if			(score >= 90	&& score <= 100)	grade = 'A';
 		else if	(score >= 80)								grade = 'B';
 		else if	(score >= 70)									grade = 'C';
@@ -36,24 +36,13 @@ public class IfForEx0126 {
 		else if	(score >= 0)									grade = 'F';
 		else	grade = '?';
 		
-		// 1-2. 신박한 if
+		// 2. 신박한 if
 		grade = '?';
 		if	(score >= 0	&& score <= 100)	grade = 'A';
 		if	(score < 90)									grade++;
 		if	(score < 80)									grade++;
 		if	(score < 70)									grade++;
 		if	(score < 60)									grade += 2;
-		
-		/* // 2. switch 문 이용
-		grade = 'F';
-		switch(score / 10) {
-		case 9: case 10: grade -= 2;
-		case 8: grade--;
-		case 7: grade--;
-		case 6: case 5: case 4: case 3: case 2: case 1: case 0:
-			break;
-		default: grade = '?';
-		} */
 		
 		System.out.printf(grade == '?'?	"자바 점수를 못 자바써요\n" :
 																	"%c 학점을 받았습니다.\n", grade);
