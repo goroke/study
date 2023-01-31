@@ -1,10 +1,10 @@
-package edu.oopfirst;
+package edu.inheritance;
 
-import java.util.Scanner;
+// import java.util.Scanner;
 
 class Person {
-	private String	name = null;
-	private int		age = 0;
+	protected String	name = null;
+	protected int		age = 0;
 	
 	private static int population = 0;
 
@@ -66,25 +66,38 @@ class Person {
 	}
 }
 
-public class OOPOne0130 {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		String myname = null; int myage = 0;
-		
-		System.out.print("이름 입력하시오: ");
-		myname = sc.nextLine();
-		System.out.print("나이 입력하시오: ");
-		myage = sc.nextInt();
-		
-		Person golbin = new Person(myname, myage);
-		
-		System.out.printf("hyunbin.name=\"%s\"\nhyunbin.age=%d\n",
-						   golbin.name(), golbin.age());
-		
-		golbin.talk();
-		golbin.talk("ㅗ무말멎렂");
-		System.out.print(Person.getPopulation());
-		
-		sc.close();
+class Man extends Person {
+	public Man(){}
+	public Man(String name){}
+	public Man(String name, int age){super(name, age);}
+	
+	private int money = 0;
+	private int pay   = 100;
+	private String job = null;
+	
+	public void work() {
+		this.money += pay;
+		System.out.printf("%s씨가 출근했습니다.\n", name);
 	}
-} 
+	
+	public int getMoney() {
+		// show me the money
+		return this.money;
+	}
+}
+
+public class Inheritance0131 {
+
+	public static void main(String[] args) {
+		Man man = new Man("???", 50);
+		man.name("유비빔");
+		man.talk("음식이 몸안에 들어가면 비벼져요");
+		man.work();
+		System.out.println(man.getMoney() + "원을 가지고 있습니다.");
+		
+		man.breathe();
+		man.talk("세계분의 비빔박자대로 비벼보겠습니다.");
+		System.out.println(man.age + "세 " + man.name + "씨");
+	}
+
+}
