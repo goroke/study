@@ -1,10 +1,12 @@
 package edu.inheritance;
 
-// import java.util.Scanner;
+
+//import java.util.Scanner;
 
 class Person {
 	protected String	name = null;
 	protected int		age = 0;
+	protected final int	IQ = 140;
 	
 	private static int population = 0;
 
@@ -40,36 +42,33 @@ class Person {
 		System.out.printf("%d번째 멤버 %s(%d) 등장\n", ++population, name, age);
 	}
 	
-	public Person() {
-		this("A", 100);
+	public Person() {this("A", 100);}
+	public String name() {return name;}
+	public void name(String name){
+		this.name = name;
+		System.out.printf("2023년 %s으로 이름 개명!\n", name);
 	}
+		
+	public int age() {return age;}
+	public void setAge(int age) {this.age = age;} 	
 
- 	public String name() {
-		return name;
-	}
- 	
- 	public int age() {
-		return age;
-	}
- 	
- 	public void setAge(int age) {
-		this.age = age;
-	} 	
- 	
-	public void name(String new_name){
-		name = new_name;
-		System.out.printf("2023년 %s으로 이름 개명!\n", new_name);
-	}
-	
 	public static int getPopulation() {
 		return Person.population;
 	}
 }
 
 class Man extends Person {
+	final int IQ = 150;
+	
 	public Man(){}
-	public Man(String name){}
+	public Man(String name){super(name);}
 	public Man(String name, int age){super(name, age);}
+	
+	public Man(String name, int age, int money, String job) {
+		super(name, age);
+		this.money = money;
+		this.job   = job;
+	}
 	
 	private int money = 0;
 	private int pay   = 100;
@@ -84,20 +83,22 @@ class Man extends Person {
 		// show me the money
 		return this.money;
 	}
+	
+	public void setJob(String job) {this.job = job;}
+	public String getJob() {return job;}
+	
+	@Override
+	public String toString() {
+		return name + "(" + age +")/" + job + " - 잔고 " + money + "원, IQ " + super.IQ;
+	}
 }
 
 public class Inheritance0131 {
 
 	public static void main(String[] args) {
-		Man man = new Man("???", 50);
-		man.name("유비빔");
-		man.talk("음식이 몸안에 들어가면 비벼져요");
-		man.work();
-		System.out.println(man.getMoney() + "원을 가지고 있습니다.");
-		
-		man.breathe();
-		man.talk("세계분의 비빔박자대로 비벼보겠습니다.");
-		System.out.println(man.age + "세 " + man.name + "씨");
+		Man man = new Man("유재석", 52, 70000, "국민MC");
+		System.out.println(man);
 	}
 
 }
+
