@@ -1,6 +1,7 @@
 package edu.polymorphism;
 
 abstract class Mammal {
+	public static int a() {return 1;};
 	public Mammal() {
 		System.out.println("Mammal()");
 	}
@@ -124,6 +125,7 @@ public class Polymorphism0201 {
 		//jaeseok.getMoney();
 		jaeseok.move();
 		
+		System.out.println(Mammal.a() + Person.a());
 		//new Mammal();
 	}
 	
