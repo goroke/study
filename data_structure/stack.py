@@ -7,15 +7,28 @@ class Stack:
         self.__raw = [None] * size
         self.__top = -1
 
-    def push(self, data):
-        if self.__top == self.__size:
-            raise OverflowError
+    def is_empty(self):
+        return self.top == -1
+
+    def is_full(self):
+        return self.__top == self.__size - 1
+
+    def push(self, data, raising_error_if_full=False):
+        if self.is_full():
+            if raising_error_if_full:
+                raise OverflowError
+            else:
+                return
+
         self.__top += 1
         self.__raw[self.__top] = data
 
-    def pop(self):
-        if self.top == -1:
-            raise Stack.UnderflowError
+    def pop(self, raising_error_if_blank=False):
+        if self.is_empty():
+            if raising_error_if_blank:
+                raise Stack.UnderflowError
+            else:
+                return
 
         ret = self.__raw[self.__top]
         self.__raw[self.__top] = None
