@@ -39,13 +39,13 @@
   - 생성자
   - 송신용 버퍼 getOutputStream
     - PrintWriter br = new PrintWriter(
-                       clientSocket.getOutputStream(), true));  
+      clientSocket.getOutputStream(), true));  
       뒤에 있는 boolean 매개변수는 버퍼를 자동으로 비워주느냐에 대한 여부
-    
+
   - 수신용 버퍼 getInputStream
     - BufferedReader br = new BufferedReader(
-                          new InputStreamReader(
-                          clientSocket.getInputStream()));
+      new InputStreamReader(
+      clientSocket.getInputStream()));
 
 
 - Socket 을 이용한 네트워크 구현
@@ -58,3 +58,31 @@
 - try (~~~~)  
   try 문 안에서만 동작하는 객체를 만들 수 있다.
 - 함수형 인터페이스
+- Runnable 또한 함수형 인터페이스이므로 람다식을 넣을 수 있다.
+- Thread Pool
+  - 무분별한 Thread 생성으로 인한 과부하를 막을 수 있다.
+  - 객체 생성
+    - ExecutorService a = Executors.newFixedThreadPool(n);
+    - Executors.newCachedThreadPool();
+  - 사용
+    - a.submit(runnable);
+  - 끝나면 shutdown 해 줘야 한다.
+    - a.shutdown();
+
+### 공부할 것들
+- Stream (Python의 Generator 와 비슷함)
+  - 용도
+    - 실시간 연산이 필요하거나, 데이터가 방대한 경우(ex: 빅 데이터)
+      - 데이터 전체를 받아오지 않음  
+        A B C가 있으면, 처음에는 A에만 접근할 수 있고, 다음은 B에만 접근할 수 있는 식.
+      - 병렬 처리에도 좋다
+
+  - 사용법
+    - Stream 생성
+      - Collection (List 등등) 에서 불러오기
+      - Array에서 불러오기
+      - 기타
+    - 명령 처리
+
+- OSI 7계층
+  - 여길 보시오 https://shlee0882.tistory.com/110

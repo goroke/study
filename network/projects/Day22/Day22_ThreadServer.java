@@ -4,6 +4,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 class ThreadSocket implements Runnable {
     private Socket s;
@@ -14,6 +16,8 @@ class ThreadSocket implements Runnable {
         this.s = s;
         this.br = new BufferedReader(new InputStreamReader(s.getInputStream()));
         this.pw = new PrintWriter(s.getOutputStream(), true);
+
+        ExecutorService a = Executors.newFixedThreadPool(100);
     }
 
     @Override

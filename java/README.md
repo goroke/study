@@ -39,7 +39,7 @@
     - <a href=https://www.jetbrains.com/idea/>IntelliJ</a>
 
     - (경우에 따라) 웹 컴파일러
-
+  
 ## 1-2. 프로젝트 생성 (with Eclipse)
 
 - **새 프로젝트 생성** [File] - [New] - [Java Project]  
@@ -246,3 +246,15 @@ A가 슈퍼 클래스, B가 서브 클래스가 된다.
 - [x] **Modifiers** (접근 권한 지정자)
   - 3\. 2 를 참고할 것
 - [ ] module-info.java 와 에러
+지금이라도 점심 먹고 졸린 시간
+- 책에 있는 공부라든지 섹션에 있는 예제
+- 예제를 바꿔서도 보여드릴 수 있다
+- 요구를 해야 한다.
+- 머릿 속에 어떤 생각이 있는 지 알 수 없음
+- thread stream functional interface
+- 실제 쓰이는 것 lambda
+- 배운 내용 중에서도 interface?.. 코드로 만들어서 할 수 있음
+- 오늘 내일 ㅜ업하고 모레가 시험
+- 모레가 오전에 네트워크 시험을 보고 모레 목요일 3교시부터 와우
+- 홀리쒸옛뚜
+- mail read ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
