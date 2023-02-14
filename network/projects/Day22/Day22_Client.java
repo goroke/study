@@ -2,21 +2,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-public class Day21_Client {
+public class Day22_Client {
     public static void main(String[] args) {
-        try (Socket socket = new Socket("165.246.115.165", 7000); // 165.246.115.106
+        try (Socket socket = new Socket("165.246.115.165", 20000); // 165.246.115.165
              PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         ) {
             System.out.println("Connected to server");
             Scanner scanner = new Scanner(System.in);
-            while (true) {
+            /*while (true) {
                 System.out.print("Enter text: ");
                 String inputLine = scanner.nextLine();
                 if ("exit".equalsIgnoreCase(inputLine)) {
@@ -26,17 +25,22 @@ public class Day21_Client {
                 String response = br.readLine();
                 System.out.println("서버로부터: " + response);
 
-            }
-            /*Stream.generate(() -> {
+            }*/
+            System.out.print("메시지 입력: ");
+            pw.println(scanner.nextLine());
+            Stream.generate(() -> {
                 try {
                     return br.readLine();
                 } catch (IOException e) {
                     return null;
                 }
-            }).peek(s -> {
+            }).map(s -> {
+                System.out.println("서버로부터: " + s);
                 String nextLine = scanner.nextLine();
                 pw.println(nextLine);
-            }).allMatch(Objects::nonNull);*/
+                return nextLine;
+            })
+            .allMatch(s -> !s.equalsIgnoreCase("exit"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

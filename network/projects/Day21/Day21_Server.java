@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 class NewThread extends Thread {
     public BufferedReader br;
@@ -36,10 +38,20 @@ public class Day21_Server {
                 a.pw = pw;
                 //a.run();
                 String line;
-                while ((line = br.readLine()) != null) {
+                /*while ((line = br.readLine()) != null) {
                     System.out.println(line);
                     pw.println(rev(line));
                 }
+                */Supplier<String> socketIn = () -> {
+                    try{ return br.readLine();}
+                    catch (IOException ex) {return null;}
+                };
+                Stream s = Stream.generate(socketIn);
+                s.map(text -> {
+                    System.out.println();
+                    pw.println(text);
+                    return s;
+                }).allMatch(t -> t != null);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
