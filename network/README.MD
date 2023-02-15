@@ -53,11 +53,16 @@
     - ServerSocket 을 만든다.
     - 송신용 버퍼, 수신용 버퍼를 만든다.
 
+
+- NetworkInterface
+
+
 ### 기타
 - URL 받아오기 (URL, URLConnection)
 - try (~~~~)  
   try 문 안에서만 동작하는 객체를 만들 수 있다.
 - 함수형 인터페이스
+  - Method Reference (ClassName::MethodName)
 - Runnable 또한 함수형 인터페이스이므로 람다식을 넣을 수 있다.
 - Thread Pool
   - 무분별한 Thread 생성으로 인한 과부하를 막을 수 있다.
@@ -71,6 +76,9 @@
 
 ### 공부할 것들
 - Stream (Python의 Generator 와 비슷함)
+  - 특징
+    - Raw Data 에 접근하지 않기 때문에 그에 따른 Side Effect 가 발생하지 않는다.
+  
   - 용도
     - 실시간 연산이 필요하거나, 데이터가 방대한 경우(ex: 빅 데이터)
       - 데이터 전체를 받아오지 않음  
@@ -79,10 +87,55 @@
 
   - 사용법
     - Stream 생성
-      - Collection (List 등등) 에서 불러오기
-      - Array에서 불러오기
-      - 기타
+      - Collection (List 등등) 에서 불러오기  
+        - java.util.Collection.stream()
+        - java.util.Collection.parallelStream()
+      - Array 에서 불러오기
+        - Arrays.stream()  
+          int, long, double 등등의 배열을 스트림 화 할 때 쓴다.
+        - Stream.of()
+        - IntStream.of()
+        - LongStream.of()
+        - DoubleStream.of()
+      - 정수형
+        - IntStream.range(~, ~)
+        - LongStream.range(~, ~)
+        - Random.ints()
+        - Random.longs()
+      - 파일 시스템
+        - Files.list(Path) 디렉토리 안에 있는 파일들로 이루어진 스트림
+        - Files.lines(Path, Charset) 파일을 한 줄씩 불러옴
+      
     - 명령 처리
+      - 변환 (스트림 → 스트림)
+        - map~~~ (스트림 안의 내용을 함수 리턴값으로 변환하여 또 다른 스트림 반환 x → f(x))
+        - flatMap~~~ (여러 개의 객체를 리턴하는 map)
+        - ?..
+      - 처리
+        - peek
+        - forEach
+
+- UML 을 이용한 설계가 먼저다.
 
 - OSI 7계층
   - 여길 보시오 https://shlee0882.tistory.com/110
+
+- SOLID
+  - 단일 책임의 원칙
+  - 개방 폐쇄의 원칙
+  - 리스코프 치환 원칙
+    - 부모 클래스의 인스턴스로 자식 클래스를 받을 수 있도록 호환성을 보장해야 한다.
+  - 인터페이스 분리 원칙
+    - 인터페이스는
+  - 역전성 의존의 원칙
+    - ?..
+  - Enumerator
+  - StringBuilder / StringBuffer
+  - ExecutorService
+    - new 키워드로 만들 수 없고, static 메서드를 이용해서 만들 수 있다.
+
+- 디자인 패턴
+
+- StringBuilder
+  - 삽입/삭제에 유리하다.
+  - 

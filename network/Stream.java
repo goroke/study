@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class Stream {
+public class Stream {
+    public static void main(String[] args) {
+
+    }
 }
