@@ -7,12 +7,12 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-class ThreadSocket implements Runnable {
+class ThreadSocketCalc implements Runnable {
     private Socket s;
     private BufferedReader br;
     private PrintWriter pw;
 
-    public ThreadSocket(Socket s) throws IOException {
+    public ThreadSocketCalc(Socket s) throws IOException {
         this.s = s;
         this.br = new BufferedReader(new InputStreamReader(s.getInputStream()));
         this.pw = new PrintWriter(s.getOutputStream(), true);
@@ -34,7 +34,7 @@ class ThreadSocket implements Runnable {
     }
 }
 
-public class Day22_ThreadServer {
+public class Day22_ThreadServerCalc {
     public static void main(String[] args) {
         System.out.println("Reverse Server");
         try (ServerSocket serverSocket = new ServerSocket(20000)) {
@@ -45,7 +45,7 @@ public class Day22_ThreadServer {
                 System.out.println("연결을 시도합니다.");
                 try {
                     Socket clientSocket = serverSocket.accept();
-                    new Thread(new ThreadSocket(clientSocket)).start();
+                    new Thread(new ThreadSocketCalc(clientSocket)).start();
 
                 } catch (Exception e) {
                     throw new RuntimeException(e);

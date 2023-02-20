@@ -19,19 +19,6 @@
   - isReachable(int time)  
     주어진 시간(ms) 안에 핑이 돌아오는가?
 
-- NIO
-  - 주요 개념
-    - Channel  
-      프로그램들 사이에서 데이터의 흐름
-      - FileChannel
-      - DatagramChannel
-      - SocketChannel
-      - ServerSocketChannel
-    - Buffer  
-      데이터를 처리하기 위한 임시 저장 공간
-    - Selector  
-      싱글 스레드에서 여러 채널을 조작할 수 있게 하는 기술
-
 - ServerSocket Class
   - 생성자 new ServerSocket(포트 번호)
 
@@ -53,8 +40,34 @@
     - ServerSocket 을 만든다.
     - 송신용 버퍼, 수신용 버퍼를 만든다.
 
+- NIO
+  - 주요 개념
+    - Channel  
+      프로그램들 사이에서 데이터의 흐름  
+      양방향 처리 가능
+      - FileChannel
+      - DatagramChannel
+      - SocketChannel
+      - ServerSocketChannel
+    - Buffer  
+      데이터를 처리하기 위한 임시 저장 공간
+    - Selector  
+      싱글 스레드에서 여러 채널을 조작할 수 있게 하는 기술
 
-- NetworkInterface
+- 비동기 소켓 채널(Asynchronous Socket Channels): 비동기 네트워킹 가능
+  - 사용되는 클래스들
+    - AsynchronousSocketChannel
+    - AsynchronousServerSocketChannel
+    - AsynchronousDatagramChannel
+  - 비동기 처리 방식
+    - Future 인터페이스
+      - boolean isDone() 작업이 끝났는가?
+      - get() 작업의 결과물을 리턴받는다.
+        - get() // 리턴받을 때까지 무한정 대기
+        - get(long timeout, TimeUnit unit) // 특정 시간만큼만 대기  
+          TimeUnit 은 열거형 (TimeUnit.SECONDS 이런 식으로 쓴다.) 
+    - CompletionHandler<V, A> 인터페이스
+      - callback 방식
 
 
 ### 기타
@@ -138,4 +151,3 @@
 
 - StringBuilder
   - 삽입/삭제에 유리하다.
-  - 

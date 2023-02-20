@@ -45,7 +45,7 @@ public class Day22_ThreadServer {
                 System.out.println("연결을 시도합니다.");
                 try {
                     Socket clientSocket = serverSocket.accept();
-                    new Thread(new ThreadSocket(clientSocket)).start();
+                    new Thread(new ThreadSocketCalc(clientSocket)).start();
 
                 } catch (Exception e) {
                     throw new RuntimeException(e);
