@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class Day22_Client {
     public static void main(String[] args) {
-        try (Socket socket = new Socket("localhost", 20000); // 165.246.115.165
+        try (Socket socket = new Socket("165.246.115.165", 20000); // 165.246.115.165
              PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         ) {

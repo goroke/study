@@ -39,6 +39,17 @@
   - Server
     - ServerSocket 을 만든다.
     - 송신용 버퍼, 수신용 버퍼를 만든다.
+    - Thread 를 만들어서 각각의 클라이언트를 처리한다.
+
+- Thread Pool
+  - 무분별한 Thread 생성으로 인한 과부하를 막을 수 있다.
+  - 객체 생성
+    - ExecutorService a = Executors.newFixedThreadPool(n);
+    - Executors.newCachedThreadPool();
+  - 사용
+    - a.submit(runnable);
+  - 끝나면 shutdown 해 줘야 한다.
+    - a.shutdown();
 
 - NIO
   - 주요 개념
@@ -49,10 +60,35 @@
       - DatagramChannel
       - SocketChannel
       - ServerSocketChannel
+  
     - Buffer  
       데이터를 처리하기 위한 임시 저장 공간
+      - _ByteBuffer buffer = ByteBuffer.allocate(int size)_;
+  
     - Selector  
       싱글 스레드에서 여러 채널을 조작할 수 있게 하는 기술
+      - 사용법
+        - 객체 생성: _Selector selector = Selector.open()_;  
+          (정적 메서드로 객체 생성)
+        - 채널 등록(셀렉터가 아닌 채널에서 메서드를 호출한다):  
+          _socketChannel.register(selector, SelectionKey.OP_WRITE, null)_;
+            - SelectionKey 값들  
+              (매개 변수로 들어간 SelectionKey 의 행동에 대해서만 Selector 에서 확인 가능)
+              - OP_CONNECT
+              - OP_ACCEPT
+              - OP_READ
+              - OP_WRITE  
+            
+              OR 연산으로 여러 개를 관찰하도록 할 수도 있다.
+          - 채널의 Blocking Mode 는 꼭 꺼져 있어야 한다.  
+            socketChannel.configureBlocking(false);
+          - 리턴 값 → SelectionKey 객체
+            - readOps (관찰 중인 행동들을 int 형태로 반환)
+            - isAcceptable/isConnectable/isReadable/isWritable
+            
+        - 등록된 채널 선택
+          - selector.selectedKeys() 안에 등록된 채널들이 있다(Set 형태).  
+            보통 이를 순환하면서 사용한다.
 
 - 비동기 소켓 채널(Asynchronous Socket Channels): 비동기 네트워킹 가능
   - 사용되는 클래스들
@@ -77,21 +113,14 @@
 - 함수형 인터페이스
   - Method Reference (ClassName::MethodName)
 - Runnable 또한 함수형 인터페이스이므로 람다식을 넣을 수 있다.
-- Thread Pool
-  - 무분별한 Thread 생성으로 인한 과부하를 막을 수 있다.
-  - 객체 생성
-    - ExecutorService a = Executors.newFixedThreadPool(n);
-    - Executors.newCachedThreadPool();
-  - 사용
-    - a.submit(runnable);
-  - 끝나면 shutdown 해 줘야 한다.
-    - a.shutdown();
+
+- JSON
+
 
 ### 공부할 것들
 - Stream (Python의 Generator 와 비슷함)
   - 특징
     - Raw Data 에 접근하지 않기 때문에 그에 따른 Side Effect 가 발생하지 않는다.
-  
   - 용도
     - 실시간 연산이 필요하거나, 데이터가 방대한 경우(ex: 빅 데이터)
       - 데이터 전체를 받아오지 않음  
@@ -151,3 +180,9 @@
 
 - StringBuilder
   - 삽입/삭제에 유리하다.
+
+- 중첩 클래스(클래스 안에 클래스)
+  - A 안에 B 를 선언하는 경우 _class A{class B ~~~~}_
+  - 타입은 A.B 로 적는다.
+  - static 이 아닌 경우는 인스턴스가 있어야 만들 수 있음 _A.B test = A.new B();_
+  - 그래픽 다룰 때 이벤트 처리에서 많이 쓴다고 함
