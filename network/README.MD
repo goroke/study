@@ -2,11 +2,11 @@
 - Socket
 - Protocol
   - TCP/UDP
+    - Network 계층
     - TCP: 신뢰할 수 있는 프로토콜(전 세계와 연결 가능)
     - UDP: 같은 네트워크에서만 쓴다
-  - HTTP
-  - FTP
-  - SMTP
+  - HTTP/FTP/SMTP
+    - Application 계층
 - Port  
   프로토콜마다 다르다.
 - P2P

@@ -1,0 +1,39 @@
+- 데이터베이스의 특징
+  - 중복성 최소화
+  - 일관성(Consistency) 유지
+  - 무결성(Integrity)
+    - 엉뚱한 데이터는 들어가지 않는다는 뜻
+  - 독립성
+    - ??
+  - 공유성
+    - 쉽게 공유할 수 있다
+  - 보안성
+    - 데이터베이스 관리 시스템(DBMS) 에서 자체적인 보안 기능 제공
+  - 표준화
+
+- 데이터베이스 사용자
+- 데이터베이스 언어
+  - DDL(Date Definition Language)
+    - CREATE
+    - DROP
+    - ALTER
+    - TRUNCATE
+  - DML(Data Manipulation Language)
+    - SELECT
+    - INSERT
+    - UPDATE
+    - DELETE
+  - DCL(Data Control Language)
+    - COMMIT
+    - ROLLBACK
+    - GRANT (권한 부여)
+    - REVOKE (권한 박탈)
+
+데이터베이스 시스템
+- MySQL
+  - MySQL Server
+  - MySQL Router (여러 대의 서버로 분산 처리 시 사용)
+
+
+### 기타
+- Transaction: 독립적으로 실행되는 명령 단위
