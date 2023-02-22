@@ -29,11 +29,32 @@
     - GRANT (권한 부여)
     - REVOKE (권한 박탈)
 
+데이터베이스 구조
+![img.png](img.png)
+
 데이터베이스 시스템
 - MySQL
   - MySQL Server
   - MySQL Router (여러 대의 서버로 분산 처리 시 사용)
 
+JAVA 구현
+- JDBC
+  - DBMS 에 구애받지 않고 동작하도록 드라이버를 알아서 잡아주는 API
+
+- 구현 방법
+  - JDBC 드라이버 로드  
+    _Class.forName_
+  - DB 연결  
+    _java.sql.Connection_ 객체 사용
+  
+  - SQL 처리 객체(Statement) 생성
+    - executeQuery → 결과물을 받아오는 경우(Select)
+    - executeUpdate → 동작만 하는 경우(Insert, Update, Delete)
+      - 리턴 값: ResultSet
+
 
 ### 기타
 - Transaction: 독립적으로 실행되는 명령 단위
+
+
+
