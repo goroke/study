@@ -12,11 +12,16 @@
   - 표준화
 
 - 데이터베이스 사용자
-- 데이터베이스 언어
+- 데이터베이스 언어와 문법
   - DDL(Date Definition Language)
     - CREATE
+      - CREATE DATABASE A: A 라는 이름의 데이터베이스 생성
+      - CREATE TABLE A: A 라는 이름의 테이블을 현재 데이터베이스에 생성
     - DROP
     - ALTER
+      - (기존 테이블에 데이터 추가/삭제)
+        - ALTER TABLE ADD (A) (TYPE) ~~
+        - ALTER TABLE DROP (A)
     - TRUNCATE
   - DML(Data Manipulation Language)
     - SELECT
@@ -28,6 +33,7 @@
     - ROLLBACK
     - GRANT (권한 부여)
     - REVOKE (권한 박탈)
+
 
 데이터베이스 구조
 ![img.png](img.png)
