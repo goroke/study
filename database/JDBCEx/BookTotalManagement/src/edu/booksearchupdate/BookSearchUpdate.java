@@ -9,16 +9,17 @@ import java.util.Scanner;
 
 public class BookSearchUpdate {
 	
-	private static void printData(ResultSet s, String x) throws SQLException {
+	private static void printData(ResultSet s, String x, String length) throws SQLException {
 		int c = 0;
-		for(String a:x.split(" ")) System.out.printf("%s%-25s", (c++>0?"|":""), a);
+		String[] titles=x.split(" "), lengthArray=length.split(" ");
+		for(c=0;c<titles.length;) {System.out.printf("%s%"+lengthArray[c]+"s", (c>0?"|":""), titles[c]); c++;}
 		System.out.println();
 		
 		while (s.next()) {
 			c = 0;
 			for(String a:x.split(" ")) {
-				if(c++>0) System.out.print("|");
-				System.out.printf("%-25s", s.getString(a));
+				if(c>0) System.out.print("|");
+				System.out.printf("%"+lengthArray[c++]+"s", s.getString(a));
 			}
 			System.out.println();
 		}
@@ -40,7 +41,7 @@ public class BookSearchUpdate {
 			Statement  statement = conn.createStatement();
 			
 			System.out.println("<현재 데이터>");
-			printData(statement.executeQuery("select * from book"), "id title publisher author");
+			printData(statement.executeQuery("select * from book"), "id title publisher author", "4 -30 -30 -10");
 			
 			System.out.print("동작을 선택하세요. (1: 검색), (2: 삽입), (3: 편집), (4: 삭제)\n입력: ");
 			String q = sc.nextLine();
@@ -63,14 +64,14 @@ public class BookSearchUpdate {
 					.append(" or");	// 여기 만들다 만 부분
 				}
 				
-				printData(statement.executeQuery(sb.toString()), );
+				printData(statement.executeQuery(sb.toString()), "id title publisher author", "4 -30 -30 -10");
 				break;
 			case "2":
 				System.out.println("서비스 준비 중 ^^;");
 				break;
 			case "3":
 			}
-			
+			sc.close();
 		} catch (SQLException e) {System.out.println("에러 발생");}
 	}
 }

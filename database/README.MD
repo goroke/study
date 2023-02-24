@@ -25,6 +25,8 @@
     - TRUNCATE
   - DML(Data Manipulation Language)
     - SELECT
+      - DISTINCT
+      - A AS B → A를 B라는 이름으로 바꾼다 (단가*수량 AS 가격 같은 것도 가능)
     - INSERT
     - UPDATE
     - DELETE
